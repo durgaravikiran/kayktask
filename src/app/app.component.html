@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr >
+        <th *ngFor="let head of headers">{{head}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let data of tabledata">{{data}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Open modal
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div cdkDropListGroup>
+                  <div class="example-container">
+                    <h2>To do</h2>
+
+                    <div
+                      cdkDropList
+                      [cdkDropListData]="todo"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                    </div>
+                  </div>
+
+                  <div class="example-container">
+                    <h2>Done</h2>
+
+                    <div
+                      cdkDropList
+                      [cdkDropListData]="done"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="onsubmit()">Submit</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</div>
+<router-outlet></router-outlet>

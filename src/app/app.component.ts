@@ -12,45 +12,51 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class AppComponent  implements OnInit{
   ngOnInit(): void {
+    console.log(this.data[0].Name);
   }
   headers = [
     'SNo',
     'Name',
     'DOB',
-   'gender',
-    'address',
-  'address1',
-  'state',
-  'city',
-  'pincode',
-  'educationaldetails'
+   'Gender',
+    'Address',
+  'Address1',
+  'State',
+  'City',
+  'Pincode',
+  'Educationaldetails'
 ];
 
-records = {
-  SNo: 1,
-  Name: 'Ravi',
-  DOB: '1234',
- gender: 'Male',
-  address: 'abcd',
-address1: 'cbda',
-state: 'andhra',
-city: 'vizag',
-pincode: 530013,
-educationaldetails:"b.tech"
-}
-
-
-
-  todo = this.headers;
+data = [
+  {
+    SNo: 1,
+    Name: 'Ravi',
+    DOB: '03-02-1995',
+   Gender: 'Male',
+    Address: 'vizag',
+  Address1: 'tpt colony',
+  State: 'andhra pradesh',
+  City: 'vizag',
+  Pincode: 530013,
+  Educationaldetails:"B.tech"
+  },{
+  SNo: 2,
+  Name: 'Ravikiran',
+  DOB: '05-10-2000',
+ Gender: 'Male',
+  Address: '',
+Address1: 'cbda',
+State: 'andhra',
+City: 'vizag',
+Pincode: 530014,
+Educationaldetails:"b.tech"
+}];
+todo = this.headers;
 
   done = [];
-  tabledata = [1,'Ravi','1234', 'Male', 'abcd', 'cbda','andhra', 'vizag', 530013, "b.tech"];
+
   onsubmit(){
     this.headers = this.done;
-    this.tabledata = [];
-    for(let i =0;i<this.headers.length;i++){
-        this.tabledata.push(this.records[this.headers[i]]);
-      }
    }
 
   drop(event: CdkDragDrop<string[]>) {
